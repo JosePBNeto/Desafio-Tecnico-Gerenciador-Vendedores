@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, make_response
 
 from Vendedor import GerenciarVendedor, Vendedor
 
@@ -33,27 +33,38 @@ def get_vendedor(cpf):
 
 @app.route('/vendedores/<cpf>', methods=['PUT'])
 def update_vendedor(cpf):
-    data = request.json
-    vendedor = Vendedor(data['nome'], data['cpf'], data['data_nascimento'], data['email'], data['estado'])
-    gerenciadorVendedor.update_vendedor(vendedor)
 
-    resposta = {
-        "message": "Vendedor atualizado com sucesso",
-        "data": {
-            "nome": vendedor.nome,
-            "cpf": vendedor.cpf,
-            "data_nascimento": str(vendedor.data_nascimento),
-            "email": vendedor.email,
-            "estado": vendedor.estado
-        }
-    }
+    vendedor_existente = gerenciadorVendedor.read_vendedor(cpf)
 
-    return jsonify(resposta), 200
+    if vendedor_existente:
+        data = request.json
+        vendedor = Vendedor(data['nome'], data['cpf'], data['data_nascimento'], data['email'], data['estado'])
+        print(vendedor.nome, vendedor.cpf)
+        gerenciadorVendedor.update_vendedor(vendedor)
+        return jsonify({
+            "status": "successo",
+            "message": f"Vendedor com CPF {cpf} atualizado com sucesso"
+        }), 200
+    else:
+        return jsonify({
+            "status": "erro",
+            "message": f"Vendedor com CPF {cpf} não encontrado"
+        }), 404
 
 @app.route('/vendedores/<cpf>', methods=['DELETE'])
 def delete_vendedor(cpf):
-    gerenciadorVendedor.delete_vendedor(cpf)
-    return jsonify({"message": "Vendedor deletado com sucesso!"})
+    vendedor = gerenciadorVendedor.read_vendedor(cpf)
+    if vendedor:
+        gerenciadorVendedor.delete_vendedor(cpf)
+        return jsonify({
+            "status": "success",
+            "message": f"Vendedor com CPF {cpf} excluído com sucesso"
+        }), 200
+    else:
+        return jsonify({
+            "status": "error",
+            "message": f"Vendedor com CPF {cpf} não encontrado"
+        }), 404
 
 @app.route('/vendedores', methods=['GET'])
 def get_all_vendedores():
