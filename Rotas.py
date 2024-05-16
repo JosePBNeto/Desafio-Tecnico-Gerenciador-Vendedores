@@ -1,8 +1,9 @@
 from flask import Flask, request, jsonify, make_response
-
 from Vendedor import GerenciarVendedor, Vendedor
+from Excel_functions import criar_atualizar_em_lotes
 
 app = Flask(__name__)
+
 gerenciadorVendedor = GerenciarVendedor()
 
 @app.route('/vendedores', methods=['POST'])
@@ -70,6 +71,26 @@ def delete_vendedor(cpf):
 def get_all_vendedores():
     vendedores = gerenciadorVendedor.read_all_vendedores()
     return jsonify([{"cpf": v[0], "nome": v[1], "data_nascimento": v[2], "email": v[3], "estado": v[4]} for v in vendedores])
+
+@app.route('/vendedores/planilha', methods=['POST'])
+def update_planilha_vendedor():
+    lista_de_vendedores = criar_atualizar_em_lotes()
+
+    vendedores_json = []
+    for vendedor in lista_de_vendedores:
+        vendedor_dict = {
+            'Nome': vendedor.nome,
+            'CPF': vendedor.cpf,
+            'Data de Nascimento': vendedor.data_nascimento,
+            'Email': vendedor.email,
+            'Estado': vendedor.estado
+        }
+        vendedores_json.append(vendedor_dict)
+
+    # Retornando a lista de vendedores em formato JSON
+    return jsonify({"message": "Vendedores atualizados ou adicionados", "vendedores": vendedores_json})
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
