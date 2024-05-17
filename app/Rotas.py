@@ -138,5 +138,3 @@ def calcular_volume_media_por_vendedor():
             "message": f"Arquivo não encontrado: {e.filename}"
         }), 404
 
-if __name__ == '__main__':
-    app.run(debug=True)
