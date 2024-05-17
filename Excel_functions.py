@@ -2,7 +2,6 @@ import pandas as pd
 from Vendedor import Vendedor, GerenciarVendedor
 
 manager = GerenciarVendedor()
-FILE_PATH = 'Vendas.xlsx'
 VALOR_DA_COMISSAO = 0.10
 COMISSAO_DE_MARKETING = 0.20
 VALOR_VENDAS_PARA_COMISSAO_DESTINADA_GERENTE = 1000
@@ -24,14 +23,17 @@ def criar_atualizar_em_lotes(file_path):
 
     return vendedores
 
-
 def formatar_moeda(value):
     if isinstance(value, str):
         return float(value.replace('R$', '').replace('.', '').replace(',', '.').strip())
     return value
 
+def salvar_dataframe_em_excel(dataframe, file_path, sheet_name, index=False):
+    with pd.ExcelWriter(file_path, mode='a', if_sheet_exists='replace') as writer:
+        dataframe.to_excel(writer, sheet_name=sheet_name, index=index)
 
 def calcular_comissoes(file_path):
+
     vendas_df = pd.read_excel(file_path, sheet_name='Vendas')
 
     vendas_df['Valor da Venda'] = vendas_df['Valor da Venda'].apply(formatar_moeda)
@@ -58,8 +60,21 @@ def calcular_comissoes(file_path):
     comissao_total = vendas_df.groupby('Nome do Vendedor')[
         ['Comissao Bruta', 'Comissao Marketing', 'Comissao Gerente', 'Comissao Final']].sum().reset_index()
 
-    with pd.ExcelWriter(FILE_PATH, mode='a', if_sheet_exists='replace') as writer:
-        comissao_total.to_excel(writer, sheet_name='Comissões Calculadas', index=False)
+    salvar_dataframe_em_excel(comissao_total, file_path, 'Comissões Calculadas')
 
+def calcular_volume_e_media_vendas(file_path):
 
+    vendas_df = pd.read_excel(file_path, sheet_name='Vendas')
+
+    vendas_df['Valor da Venda'] = vendas_df['Valor da Venda'].apply(formatar_moeda)
+
+    volume_vendas = vendas_df.groupby(['Nome do Vendedor', 'Canal de Venda']).size().reset_index(name='Volume de Vendas')
+
+    media_vendas = vendas_df.groupby(['Nome do Vendedor', 'Canal de Venda'])['Valor da Venda'].mean().reset_index(name='Média de Vendas')
+
+    media_vendas['Média de Vendas'] = media_vendas['Média de Vendas'].round(2)
+
+    resultado = pd.merge(volume_vendas, media_vendas, on=['Nome do Vendedor', 'Canal de Venda'])
+
+    salvar_dataframe_em_excel(resultado, file_path, 'Volume de Vendas e média')
 
