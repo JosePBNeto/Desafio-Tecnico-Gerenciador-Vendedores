@@ -5,9 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d686b456-7c5d-4a25-8cc6-9b2f61d8adfd" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Rotas.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/Rotas.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/Vendas.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/resources/Vendas.xlsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,18 +33,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.Excel_functions.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Rotas.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Vendedor.executor&quot;: &quot;Run&quot;,
-    &quot;Python.teste.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/josep/PycharmProjects/Desafio_Tecnico_AAWZ_backend&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.Excel_functions.executor": "Run",
+    "Python.Rotas (1).executor": "Run",
+    "Python.Rotas.executor": "Run",
+    "Python.Vendedor.executor": "Run",
+    "Python.teste.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/josep/PycharmProjects/Desafio_Tecnico_AAWZ_backend"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\josep\PycharmProjects\DesafioTecnicoBackend_AAWZ\app" />
@@ -53,7 +54,7 @@
       <recent name="C:\Users\josep\PycharmProjects\DesafioTecnicoBackend_AAWZ" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.Rotas (1)">
     <configuration name="Excel_functions" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="DesafioTecnicoBackend_AAWZ" />
       <option name="ENV_FILES" value="" />
@@ -76,7 +77,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Rotas" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="Rotas (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="DesafioTecnicoBackend_AAWZ" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -85,11 +86,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/app" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\Users\josep\PycharmProjects\DesafioTecnicoBackend_AAWZ\app\Rotas.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/app/Rotas.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -122,7 +123,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.Rotas" />
+        <item itemvalue="Python.Rotas (1)" />
         <item itemvalue="Python.Excel_functions" />
         <item itemvalue="Python.teste" />
       </list>
