@@ -1,0 +1,198 @@
+{
+	"info": {
+		"_postman_id": "d17e7970-9500-4e1b-9b6f-9aa7fa44a2c1",
+		"name": "Vendedores_API_Desafio",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28411536"
+	},
+	"item": [
+		{
+			"name": "GET Vendedores",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/vendedores",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"vendedores"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Vendedor",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\r\n    \"nome\": \"Jose Patricio\",\r\n    \"cpf\": \"391.321.321-11\",\r\n    \"data_nascimento\": \"1980-02-07\",\r\n    \"email\": \"joosee@gmail.com\",\r\n    \"estado\": \"SC\"\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/vendedores",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"vendedores"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Vendedor",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\r\n    \"nome\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\r\n    \"cpf\": \"123.321.321-11\",\r\n    \"data_nascimento\": \"1980-02-07\",\r\n    \"email\": \"321@example.com\",\r\n    \"estado\": \"PE\"\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/vendedores/391.321.321-11",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"vendedores",
+						"391.321.321-11"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE Vendedor",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/vendedores/391.321.321-11",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"vendedores",
+						"391.321.321-11"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Atualizar Planilha em Lote",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/vendedores/planilha",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"vendedores",
+						"planilha"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Calcular Comissoes",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/vendedores/calcularComissao",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"vendedores",
+						"calcularComissao"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Calcular Volume e Media por Canal",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/vendedores/calcularVolumeVendasPorCanal",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"vendedores",
+						"calcularVolumeVendasPorCanal"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Vendedor por CPF",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/vendedores/458.567.890-00",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"vendedores",
+						"458.567.890-00"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
