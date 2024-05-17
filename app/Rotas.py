@@ -1,12 +1,12 @@
-from flask import Flask, request, jsonify, make_response
+from flask import Flask, request, jsonify
 from Vendedor import GerenciarVendedor, Vendedor
-from Excel_functions import criar_atualizar_em_lotes, calcular_comissoes, calcular_volume_e_media_vendas
+from app.Excel_functions import criar_atualizar_em_lotes, calcular_comissoes, calcular_volume_e_media_vendas
 
 app = Flask(__name__)
 
 gerenciadorVendedor = GerenciarVendedor()
-FILE_PATH_VENDAS = 'Vendas.xlsx'
-FILE_PATH_VENDEDORES = "planilha_vendedores.xlsx"
+FILE_PATH_VENDAS = '../resources/Vendas.xlsx'
+FILE_PATH_VENDEDORES = "../resources/Vendedores.xlsx"
 
 @app.route('/vendedores', methods=['POST'])
 def create_vendedor():

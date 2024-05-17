@@ -33,7 +33,6 @@ def salvar_dataframe_em_excel(dataframe, file_path, sheet_name, index=False):
         dataframe.to_excel(writer, sheet_name=sheet_name, index=index)
 
 def calcular_comissoes(file_path):
-
     vendas_df = pd.read_excel(file_path, sheet_name='Vendas')
 
     vendas_df['Valor da Venda'] = vendas_df['Valor da Venda'].apply(formatar_moeda)
@@ -63,7 +62,6 @@ def calcular_comissoes(file_path):
     salvar_dataframe_em_excel(comissao_total, file_path, 'Comissões Calculadas')
 
 def calcular_volume_e_media_vendas(file_path):
-
     vendas_df = pd.read_excel(file_path, sheet_name='Vendas')
 
     vendas_df['Valor da Venda'] = vendas_df['Valor da Venda'].apply(formatar_moeda)
