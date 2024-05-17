@@ -3,10 +3,12 @@ from Vendedor import GerenciarVendedor, Vendedor
 from app.Excel_functions import criar_atualizar_em_lotes, calcular_comissoes, calcular_volume_e_media_vendas
 
 app = Flask(__name__)
+app.config['JSON_SORT_KEYS'] = False
 
 gerenciadorVendedor = GerenciarVendedor()
 FILE_PATH_VENDAS = '../resources/Vendas.xlsx'
 FILE_PATH_VENDEDORES = "../resources/Vendedores.xlsx"
+
 
 @app.route('/vendedores', methods=['POST'])
 def create_vendedor():
@@ -27,12 +29,15 @@ def create_vendedor():
 
     return jsonify(resposta), 201
 
+
 @app.route('/vendedores/<cpf>', methods=['GET'])
 def get_vendedor(cpf):
     vendedor = gerenciadorVendedor.read_vendedor(cpf)
     if vendedor:
-        return jsonify({"cpf": vendedor[0], "nome": vendedor[1], "data_nascimento": vendedor[2], "email": vendedor[3], "estado": vendedor[4]}), 200
+        return jsonify({"cpf": vendedor[0], "nome": vendedor[1], "data_nascimento": vendedor[2], "email": vendedor[3],
+                        "estado": vendedor[4]}), 200
     return jsonify({"message": "Vendedor não encontrado"}), 404
+
 
 @app.route('/vendedores/<cpf>', methods=['PUT'])
 def update_vendedor(cpf):
@@ -53,6 +58,7 @@ def update_vendedor(cpf):
             "message": f"Vendedor com CPF {cpf} não encontrado"
         }), 404
 
+
 @app.route('/vendedores/<cpf>', methods=['DELETE'])
 def delete_vendedor(cpf):
     vendedor = gerenciadorVendedor.read_vendedor(cpf)
@@ -68,10 +74,13 @@ def delete_vendedor(cpf):
             "message": f"Vendedor com CPF {cpf} não encontrado"
         }), 404
 
+
 @app.route('/vendedores', methods=['GET'])
 def get_all_vendedores():
     vendedores = gerenciadorVendedor.read_all_vendedores()
-    return jsonify([{"cpf": v[0], "nome": v[1], "data_nascimento": v[2], "email": v[3], "estado": v[4]} for v in vendedores]), 200
+    return jsonify(
+        [{"cpf": v[0], "nome": v[1], "data_nascimento": v[2], "email": v[3], "estado": v[4]} for v in vendedores]), 200
+
 
 @app.route('/vendedores/planilha', methods=['POST'])
 def update_planilha_vendedor():
@@ -90,17 +99,20 @@ def update_planilha_vendedor():
 
     return jsonify({"message": "Vendedores atualizados ou adicionados", "vendedores": vendedores_json}), 201
 
+
 @app.route('/vendedores/calcularComissao', methods=['POST'])
 def calcular_planilha_vendedor():
     calcular_comissoes(FILE_PATH_VENDAS)
 
-    return jsonify({'success': 'Comissões calculadas sucesso'}), 201
+    return jsonify({'success': 'Comissões calculadas sucesso. Foi adicionado ou atualizado uma nova sheet na plhanilha excel'}), 201
+
 
 @app.route('/vendedores/calcularVolumeVendasPorCanal', methods=['POST'])
 def calcular_volume_media_por_vendedor():
     calcular_volume_e_media_vendas(FILE_PATH_VENDAS)
 
     return jsonify({'success': 'Volume de vendas e média por profissional por canal calculadao com sucesso'}), 201
+
 
 if __name__ == '__main__':
     app.run(debug=True)
