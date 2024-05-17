@@ -70,7 +70,7 @@ http://localhost:5000/vendedores/calcularComissao
 Certifique-se de que os arquivos Vendas.xlsx e Vendedores.xlsx estejam presentes na pasta resources para que as operações de leitura e escrita funcionem corretamente.
 
 ### Execução do projeto:
-Para iniciar a aplicação, execute o arquivo run.py:
+Para iniciar a aplicação, execute o arquivo run.py na pasta "app":
 
 ```bash
 python run.py
